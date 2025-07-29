@@ -1,6 +1,12 @@
 name: test
 
 on:
+  workflow_call:
+    inputs:
+      service_name:
+        type: string
+        required: true
+        description: 服务名称
   push:
     branches:
       - 'feature/**'
@@ -19,4 +25,4 @@ jobs:
     steps:
       # 步骤一：打印 "Hello, world!"
       - name: Print Greeting
-        run: echo "Hello, world!"
+        run: echo "Hello, world!, ${{ inputs.service_name }}"
